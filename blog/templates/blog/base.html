@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
+</head>
+<body>
+<header>
+    <h1>Blog Posts</h1>
+    <nav>
+        <form action="{% url 'post_list' %}" method="get" style="display: inline;">
+            <button type="submit" class="btn-nav">Home</button>
+        </form>
+
+        <form action="{% url 'add_post' %}" method="get" style="display: inline;">
+            <button type="submit" class="btn-nav">Add Post</button>
+        </form>
+
+    </nav>
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer>
+    <p>&copy; 2024 Blog</p>
+</footer>
+</body>
+</html>

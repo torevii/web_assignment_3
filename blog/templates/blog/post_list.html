@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Post List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <nav>
+            <form action="{% url 'add_post' %}" method="get">
+    <button type="submit" class="btn-add-post">Add</button>
+</form>
+
+        </nav>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a> by {{ post.author }}
+                <small>Published on: {{ post.published_date|date:"F j, Y" }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
